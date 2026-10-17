@@ -36,7 +36,7 @@ These are starter roles. Confirm exact permissions and who may approve stock adj
 For a location and item, opening balance is the sum of all earlier movements. For the selected period:
 closing administrative balance = opening + receipts + transfer-in + returns - transfer-out - use - expired/damaged + approved adjustments.
 Transfer-out and transfer-in are recorded at their respective locations and are **not patient consumption**.
-The physical-stock field currently mirrors the administrative balance because this starter UI does not yet include a physical-count entry field. Before official reconciliation, add a verified physical count input and discrepancy approval workflow. Do not treat the current zero-difference placeholder as a completed stock opname.
+The physical-stock field can be entered in the stock reconciliation table and is saved per item/location/month. The difference is calculated as physical minus administrative stock. Any correction to administrative stock must be documented through an approved adjustment transaction; a physical count does not automatically change the book balance.
 Stock status thresholds (critical <=5, low <=20, surplus >1000) are demo defaults, not official thresholds; set locally approved thresholds before operational use.
 Sample data is labeled DATA CONTOH. Use “Unduh cadangan JSON” for local backup; this does not back up shared Supabase data.
 
