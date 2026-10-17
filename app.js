@@ -65,5 +65,5 @@ $('installBtn').addEventListener('click',async()=>{if(!deferredPrompt){toast('Gu
 if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
 setOnline();
 if(cfg.SUPABASE_URL&&cfg.SUPABASE_ANON_KEY&&window.supabase){supabase=window.supabase.createClient(cfg.SUPABASE_URL,cfg.SUPABASE_ANON_KEY);supabase.auth.getSession().then(async({data:d})=>{if(d.session){session=d.session;mode='shared';try{await backendLoad();showApp()}catch(e){showAuth();setMessage('authMessage','Sesi ada, tetapi data gagal dimuat: '+e.message)}}})}
-else {readLocal();showAuth()}
+else {readLocal();showApp()}
 })();
