@@ -42,6 +42,12 @@ create table if not exists public.patient_reconciliations (
   discrepancy boolean not null default false,
   outcome text not null check(outcome in ('resolved','pending','referred','none')),
   note text,
+  allergy_status text not null default 'unknown' check(allergy_status in ('unknown','none','reported','confirmed')),
+  adherence_status text not null default 'unknown' check(adherence_status in ('unknown','good','issue','not_applicable')),
+  issue_type text not null default 'none' check(issue_type in ('none','omission','duplication','dose','frequency','allergy','interaction','adherence','other')),
+  medication_comparison jsonb not null default '[]'::jsonb check(jsonb_typeof(medication_comparison)='array'),
+  decision text,
+  education text,
   created_by uuid not null references auth.users(id),
   created_at timestamptz not null default now(),
   unique(date,case_ref)
