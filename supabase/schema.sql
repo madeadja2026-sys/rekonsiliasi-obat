@@ -86,3 +86,23 @@ using(public.current_app_role()='admin');
 -- values ('AUTH-USER-UUID','Nama Petugas','admin','Puskesmas Ngalupolo');
 -- Never put service_role key in frontend. Do not store patient names, NIK, address, phone, diagnoses,
 -- prescription images, or other direct identifiers in this aggregate-indicator prototype.
+
+create table if not exists public.stock_counts (
+  id uuid primary key default gen_random_uuid(),
+  item_name text not null check(length(item_name) between 1 and 180),
+  location text not null check(length(location) between 1 and 140),
+  period text not null check(period ~ '^\\d{4}-\\d{2}$'),
+  physical_qty numeric(14,3) not null check(physical_qty>=0),
+  counted_by uuid not null references auth.users(id),
+  updated_at timestamptz not null default now(),
+  unique(item_name,location,period)
+);
+alter table public.stock_counts enable row level security;
+drop policy if exists "active team reads stock counts" on public.stock_counts;
+create policy "active team reads stock counts" on public.stock_counts for select to authenticated using(public.current_user_active());
+drop policy if exists "team records stock counts" on public.stock_counts;
+create policy "team records stock counts" on public.stock_counts for insert to authenticated with check(public.current_user_active() and public.current_app_role() in ('admin','apoteker','petugas') and counted_by=auth.uid());
+drop policy if exists "team updates stock counts" on public.stock_counts;
+create policy "team updates stock counts" on public.stock_counts for update to authenticated using(public.current_app_role() in ('admin','apoteker','petugas')) with check(public.current_app_role() in ('admin','apoteker','petugas'));
+drop policy if exists "admin deletes stock counts" on public.stock_counts;
+create policy "admin deletes stock counts" on public.stock_counts for delete to authenticated using(public.current_app_role()='admin');
