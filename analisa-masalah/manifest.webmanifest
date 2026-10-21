@@ -1,0 +1,19 @@
+{
+  "name": "RUANG SOLUSI — Analisis Masalah",
+  "short_name": "Ruang Solusi",
+  "description": "Alat bantu pribadi untuk analisis masalah, rapat, keputusan, dan tindak lanjut.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#f3f6fa",
+  "theme_color": "#102b46",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
