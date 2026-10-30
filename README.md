@@ -46,3 +46,11 @@ Sample data is labeled DATA CONTOH. Use “Unduh cadangan JSON” for local back
 - Shared mode requires a network connection to sign in and sync. Offline entries are not automatically queued/synced to Supabase.
 - On Android Chrome: open the HTTPS app URL → menu ⋮ → Install app / Add to Home screen.
 - iPhone/iPad: Safari → Share → Add to Home Screen.
+
+
+## Standalone patient medication reconciliation app
+A separate patient medication-reconciliation PWA is published in the `rekonsiliasi-pasien/` folder and does not share code or local storage with the stock-reconciliation dashboard.
+
+- App URL: https://madeadja2026-sys.github.io/rekonsiliasi-obat/rekonsiliasi-pasien/
+- Install on Android: open the URL in Chrome, wait for the first online load, open the three-dot menu, then choose **Install app** or **Add to Home screen**.
+- The patient module uses local browser storage on one device only. It has no login, dedicated encryption, immutable audit trail, or shared database yet. Use simulated/pseudonymous case data only until approved privacy controls and institutional governance are implemented.
