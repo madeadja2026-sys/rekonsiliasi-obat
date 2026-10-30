@@ -1,0 +1,21 @@
+{
+  "id": "./",
+  "name": "Rekonsiliasi Obat Pasien - Puskesmas Ngalupolo",
+  "short_name": "Rekon Pasien",
+  "description": "Aplikasi mandiri rekonsiliasi obat pasien.",
+  "lang": "id-ID",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#f2f6f7",
+  "theme_color": "#123b52",
+  "icons": [
+    {
+      "src": "./icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
